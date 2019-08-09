@@ -25,7 +25,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 * When the user clicks on a secret place, stuff will happen.
 	 * 
 	 * 1. Make the frame respond to mouse clicks.
-	 * 
+	 
 	 * 2. When the mouse is clicked, use the Media Palace (read the code in the magic_box package) to play sounds, 
 	 *    show images or speak.
 	 * 
@@ -54,6 +54,8 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+	frame.addMouseListener(this);
+	
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -65,6 +67,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		}
 	}
 
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(backgroundImage, 0, 0, null);
@@ -74,13 +77,26 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+System.out.println(e.getX());
+		System.out.println(e.getY());
+		if (e.getX() < 545 && e.getX() > 535 && e.getY() > 357 &&e.getY() < 367) {
+			System.out.println("secret found");
+		}
+		if (e.getX() < 210 && e.getX() > 180 && e.getY() > 534 &&e.getY() < 544) {
+			System.out.println("secret found");
+		}
+		if (e.getX() < 345 && e.getX() > 325 && e.getY() > 158 &&e.getY() < 178) {
+			System.out.println("secret found");
+		}
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
+		}
+	
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -91,13 +107,12 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 }
