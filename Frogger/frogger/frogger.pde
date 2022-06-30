@@ -36,6 +36,12 @@ public class Car{
  
  
  }
+ 
+  public int getsize(){
+   return this.size;
+ 
+ 
+ }
   
 public int getY(){
    return this.cary;
@@ -47,7 +53,16 @@ void display()
     rect(carx , cary,  size, 50);
   }
   
+boolean intersects(Car car) {
+ if ((frogy > car.getY() && frogy < car.getY()+50) &&
+                (frogx > car.getX() && frogx < car.getX()+car.getsize())) {
+   return true;
+  }
+ else  {
+  return false;
+ }
 
+}
 }
  Car car1;
  Car car2;
@@ -59,9 +74,9 @@ void setup(){
   
 size(800,600);
   
-   car1 = new Car(50,50,50,6);
+   car1 = new Car(50,50,50,8);
  
-   car2 = new Car(100,50,50,4);
+   car2 = new Car(100,50,50,8);
   
 }
 
@@ -98,18 +113,16 @@ ellipse(frogx, frogy, 30, 30);
   println("car1 x " + car1.getX());
   println("frog x: " + frogx);
 
-
-boolean intersects(Car car) {
- if ((frogY > car.getY() && frogY < car.getY()+50) &&
-                (frogX > car.getX() && frogX < car.getX()+car.getSize())) {
-   return true;
+  if(car1.intersects(car1) == true){
+    frogy = 400;
   }
- else  {
-  return false;
- }
+  
+  if(car2.intersects(car2) == true){
+    frogy = 400;
+  }
    
 }
-}
+
 void keyPressed()
 {
     if(key == CODED){
